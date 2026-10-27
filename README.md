@@ -1,7 +1,7 @@
 # Raga Fit
 
 Aplikasi pencatat latihan untuk pemula — PWA mobile-first, dark mode, bahasa Indonesia.
-Stack: **Next.js (App Router) + Tailwind CSS v4 + Supabase**. Referensi rencana: `Masterplan MVP Lite Aplikasi Pencatat Latihan untuk Pemula.md`.
+Stack: **Next.js (App Router) + Tailwind CSS v4 + Supabase**. Referensi plan: `Masterplan MVP Lite Aplikasi Pencatat Latihan untuk Pemula.md`.
 
 ## Layar (MVP Lite)
 
@@ -11,7 +11,17 @@ Stack: **Next.js (App Router) + Tailwind CSS v4 + Supabase**. Referensi rencana:
 4. Layar latihan satu gerakan per layar (portrait & landscape ponsel) — `/workout/[1-7]`
 5. Latihan selesai (durasi, total set, total beban)
 
-## Menjalankan
+## Environment Variables
+
+| Variabel | Sumber | Dipakai di |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase → Settings → API → Project URL | Semua modul Supabase (browser + server + proxy) |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase → Settings → API → Publishable key (anon) | Semua modul Supabase (browser + server + proxy) |
+
+Keduanya public-safe (anon/publishable); RLS memastikan tiap user hanya melihat datanya.
+`service_role`/secret key TIDAK dipakai di repo ini.
+
+## Menjalankan Lokal
 
 ```bash
 cp .env.local.example .env.local   # isi dari Supabase → Settings → API (URL + publishable key)
@@ -22,9 +32,30 @@ npm run dev
 Penting (Windows): pastikan variabel `NODE_ENV=production` tidak ter-set global saat
 menginstall, karena npm akan melewatkan devDependencies.
 
-## Database
+## Database (sekali jalan)
 
-Jalankan `supabase/schema.sql` di Supabase SQL Editor (tables + trigger + RLS + RPC).
+Jalankan `supabase/schema.sql` di Supabase SQL Editor (tables + trigger + RLS + RPC),
+atau:
+
+```bash
+npx supabase db query --db-url "postgresql://postgres.<project-ref>:<PASSWORD>@<REGION_POOLER>/postgres:5432/postgres" -f supabase/schema.sql
+```
+
+Pengaturan Supabase yang briwa: **Authentication → Sign In/Providers → Email → "Confirm
+email" nonaktif** (versi MVP tidak punya alur reset password).
+
+## Deploy ke Vercel
+
+1. Import repo `IdhamTryCode/raga-fit` di Vercel (framework: deteksi Next.js otomatis).
+2. Di Project Settings → Environment Variables tambahkan dua variabel dari tabel di atas
+   (Production + Preview).
+3. Tambahkan domain Vercel ke Supabase → Authentication → URL Configuration
+   (Site URL + Redirect URLs) bila mengaktifkan email/rilis publik. Untuk MVP email
+   password-only ini opsional.
+4. Deploy. PWA akan tersaji dari domain produksi; ikon dan manifest sudah di `public/` + `src/app/manifest.ts`.
+
+Catatan bypass: `npm run check-exercises` memvalidasi 162 gambar jsDelivr setiap katalog
+diubah; commit SHA terkunci sehingga aman untuk production.
 
 ## Perintah
 
@@ -52,3 +83,5 @@ setiap katalog berubah.
 - Auto-fill beban terakhir lewat RPC `get_last_exercise_logs` (memakai `auth.uid()`).
 - Timer istirahat & stopwatch berbasis timestamp + Wake Lock; pada iPhone terkunci beep
   tidak berbunyi — status "selesai" tampil saat kembali ke app.
+- Fallback ID gerakan tidak dikenal: UI melewati baris tersebut, tidak crash.
+

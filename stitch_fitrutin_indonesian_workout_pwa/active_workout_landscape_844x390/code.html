@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="landscape_workout" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#0f131c;}body{overscroll-behavior-x:none;overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}.pl-safe{padding-left:env(safe-area-inset-left,0px);}.pr-safe{padding-right:env(safe-area-inset-right,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-fixed-variant": "#2f2ebe", "on-tertiary-container": "#0e009a", "outline-variant": "#5b403a", "primary-fixed-dim": "#ffb4a3", "error-container": "#93000a", "inverse-surface": "#dfe2ee", "on-secondary-container": "#00311f", "primary-fixed": "#ffdad2", "on-error": "#690005", "tertiary-container": "#8285ff", "on-tertiary-fixed": "#07006c", "secondary-fixed": "#6ffbbe", "secondary": "#4edea3", "surface-container": "#1c2028", "on-secondary-fixed-variant": "#005236", "on-tertiary": "#1000a9", "primary": "#ffb4a3", "on-primary-container": "#5a0c00", "on-background": "#dfe2ee", "surface": "#0f131c", "error": "#ffb4ab", "background": "#0f131c", "on-surface": "#dfe2ee", "on-primary-fixed-variant": "#8c1900", "on-secondary-fixed": "#002113", "surface-bright": "#353942", "tertiary": "#c0c1ff", "tertiary-fixed": "#e1e0ff", "surface-container-low": "#181c24", "on-primary": "#630f00", "primary-container": "#ff5a36", "inverse-on-surface": "#2c3039", "surface-dim": "#0f131c", "on-secondary": "#003824", "surface-container-high": "#262a33", "surface-container-highest": "#31353e", "surface-container-lowest": "#0a0e16", "outline": "#aa8982", "inverse-primary": "#b52603", "surface-variant": "#31353e", "tertiary-fixed-dim": "#c0c1ff", "surface-tint": "#ffb4a3", "on-surface-variant": "#e3beb6", "secondary-fixed-dim": "#4edea3", "on-primary-fixed": "#3d0600", "secondary-container": "#00a572", "on-error-container": "#ffdad6" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-lg": "1rem", "space-md": "0.75rem", "margin": "1rem", "gutter": "1rem", "space-xl": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem" }, "fontFamily": { "label-md": ["Plus Jakarta Sans"], "label-xs": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "headline-metric-mobile": ["Plus Jakarta Sans"], "display-timer-mobile": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "display-timer": ["Plus Jakarta Sans"], "headline-metric": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"] }, "fontSize": { "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "label-xs": ["10px", { "lineHeight": "12px", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "headline-metric-mobile": ["26px", { "lineHeight": "30px", "fontWeight": "700" }], "display-timer-mobile": ["40px", { "lineHeight": "44px", "fontWeight": "800" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "display-timer": ["48px", { "lineHeight": "52px", "fontWeight": "800" }], "headline-metric": ["32px", { "lineHeight": "36px", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }] } } } };</script><style>body { min-height: 100dvh; max-width: 100vw; overflow-x: hidden; }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md min-h-screen flex flex-col selection:bg-primary-container selection:text-white"><header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.22)]"><div class="h-12 w-full max-w-[844px] mx-auto px-4 pl-safe pr-safe flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Tutup Latihan" class="w-9 h-9 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-all" onclick="history.back()"><span class="material-symbols-outlined text-[20px]">close</span></button><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><h1 class="font-headline-sm text-[16px] leading-[22px] text-on-surface font-semibold truncate max-w-[260px]">Active Workout Landscape</h1></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-secondary text-label-xs font-label-xs"><span class="material-symbols-outlined text-[14px]">sync</span><span>Tersimpan Offline</span></div><button aria-label="Opsi Latihan" class="w-9 h-9 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-all"><span class="material-symbols-outlined text-[20px]">more_horiz</span></button></div></div></header><main class="flex-1 flex flex-col relative w-full max-w-[844px] mx-auto px-4 pl-safe pr-safe pt-12 pb-safe bg-surface"><div class="flex flex-col w-full pb-3">
+<!-- Landscape Session Meta Sub-bar -->
+<div class="flex items-center justify-between px-3 py-1.5 mb-2 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-2 min-w-0">
+<span class="font-headline-sm text-headline-sm text-primary-container truncate font-bold">Kamis • Kaki &amp; Bahu</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+<span class="font-label-md text-label-md text-on-surface-variant hidden sm:inline">Set 2 dari 3</span>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-secondary text-label-xs font-label-xs">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span>Sesi 18:25</span>
+</div>
+<button aria-label="Keluar Sesi" class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface text-label-xs font-label-xs transition-colors" type="button">
+<span class="material-symbols-outlined text-[14px]">logout</span>
+<span>Keluar</span>
+</button>
+</div>
+</div>
+<!-- Main Landscape 2-Column Workout Grid -->
+<div class="grid grid-cols-12 gap-3 w-full items-start">
+<!-- LEFT COLUMN: Exercise Visuals, Guidance & Swap (~40% width) -->
+<div class="col-span-12 sm:col-span-5 flex flex-col gap-2.5">
+<!-- Motion Exercise Card (Simulated 2-Phase Looping Display) -->
+<div class="relative bg-surface-container-low rounded-xl overflow-hidden shadow-md">
+<!-- Visual Presentation -->
+<div class="relative w-full h-[152px] bg-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover transition-opacity duration-300" data-alt="Athletic Indonesian male seated on gym bench performing dumbbell overhead press in modern ambient dark gym, front-facing ergonomic angle, soft sunset coral edge highlights, cinematic warm lighting, clean visual form" id="exercise-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtz_5XURVKG5r-Nycxd_09IIs0HX-tiKVyXLJyLtk9j7e1AdTPycyiPJJ4N0coEOViOm1kwZbf68s_y8VXeb_k-v48XJBBCd3OUXmy3duzqo4RK8iM50YL3Cig8D8NFTXDc6xMyk6xjcjdTvFfDN-61z49UJgLPz_RycSMJDoecZQh_ZBJWVqXNhuVP0IBeYn-LfBCeBZigONfBIyBLm8IX25nJ4eMIknyjfiX7AsKa4BAbzDXTdwI7g"/>
+<!-- Phase Switcher Badges -->
+<div class="absolute top-2 left-2 flex items-center gap-1.5 bg-surface-container-lowest/80 backdrop-blur-md px-2 py-1 rounded-full shadow-sm">
+<button class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary font-label-xs text-label-xs transition-all" id="pos-btn-1" onclick="setFrame(1)" type="button">
+              1. Awal
+            </button>
+<button class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-xs text-label-xs transition-all" id="pos-btn-2" onclick="setFrame(2)" type="button">
+              2. Puncak
+            </button>
+</div>
+<!-- Video / Loop Indicator -->
+<div class="absolute top-2 right-2 flex items-center gap-1 bg-surface-container-lowest/80 backdrop-blur-md px-2 py-1 rounded-full text-secondary text-label-xs font-label-xs">
+<span class="material-symbols-outlined text-[13px] animate-spin" style="animation-duration: 4s;">autorenew</span>
+<span>Loop</span>
+</div>
+<!-- Muscle Tag Floating Scrim -->
+<div class="absolute bottom-2 left-2 right-2 flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-highest/90 text-on-surface font-label-xs text-label-xs shadow-sm">Bahu Depan &amp; Triceps</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-highest/90 text-primary-fixed font-label-xs text-label-xs shadow-sm">RPE 8.0</span>
+</div>
+</div>
+<!-- Exercise Details Header -->
+<div class="p-2.5 flex flex-col gap-1.5">
+<div class="flex items-start justify-between gap-1">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight">Dumbbell Overhead Press</h2>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-xs text-label-xs">Dumbbell</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-xs text-label-xs">Target: 3 × 10–12</span>
+</div>
+</div>
+<button aria-label="Info Form" class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high shrink-0" type="button">
+<span class="material-symbols-outlined text-[18px]">info</span>
+</button>
+</div>
+<!-- Concise Ergonomic Cue Card -->
+<div class="flex items-center gap-2 p-2 rounded-lg bg-surface-container">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0" style="font-variation-settings: 'FILL' 1;">tips_and_updates</span>
+<p class="font-label-md text-label-md text-on-surface-variant leading-snug">Jaga siku 45° dari tubuh, kunci otot inti, jangan melengkungkan punggung bawah.</p>
+</div>
+<!-- Prominent Quick Action Button -->
+<button class="w-full h-11 flex items-center justify-center gap-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary-fixed font-label-lg text-label-lg active:scale-98 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">swap_horiz</span>
+<span>Ganti Gerakan</span>
+</button>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Routine Stepper, Sets Logger & Rest Module (~60% width) -->
+<div class="col-span-12 sm:col-span-7 flex flex-col gap-2.5">
+<!-- Top Pill Stepper: Routine Exercise Navigator -->
+<div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar w-full">
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-container text-secondary text-label-md font-label-md shrink-0 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>1 Squat</span>
+</button>
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-primary-container text-on-primary text-label-md font-label-md shrink-0 shadow-md font-bold" type="button">
+<span class="w-2 h-2 rounded-full bg-on-primary animate-ping"></span>
+<span>2 Press</span>
+</button>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface text-label-md font-label-md shrink-0" type="button">
+<span>3 RDL</span>
+</button>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface text-label-md font-label-md shrink-0" type="button">
+<span>4 Raise</span>
+</button>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface text-label-md font-label-md shrink-0" type="button">
+<span>5 Lunge</span>
+</button>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface text-label-md font-label-md shrink-0" type="button">
+<span>6 Plank</span>
+</button>
+</div>
+<!-- Sets Logger Container -->
+<div class="flex flex-col gap-2 w-full">
+<!-- SET 1: Completed State -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Set 1</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-secondary text-label-xs font-label-xs font-bold">SELESAI</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant font-medium">14.0 kg × 12 reps</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-xs text-label-xs text-on-surface-variant block">Riwayat Sesi Lalu</span>
+<span class="font-label-md text-label-md text-outline font-semibold">14.0 kg × 12</span>
+</div>
+</div>
+<!-- SET 2: Active Set with Large Stepper & Quick Shortcut -->
+<div class="p-3 rounded-xl bg-surface-container shadow-lg flex flex-col gap-2.5 relative">
+<!-- Active Set Ribbon Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">Set 2 — Aktif</span>
+</div>
+<span class="font-label-xs text-label-xs px-2 py-0.5 rounded-full bg-primary-container/20 text-primary-fixed font-semibold">Target: 10–12 Reps</span>
+</div>
+<!-- Steppers Grid (Side by Side for Ergonomic Thumbs) -->
+<div class="grid grid-cols-2 gap-2">
+<!-- Weight Stepper Module -->
+<div class="p-2 rounded-lg bg-surface-container-high flex flex-col items-center">
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider mb-1 font-bold">Beban (Kg)</span>
+<div class="flex items-center justify-between w-full">
+<button aria-label="Kurangi Beban" class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-on-surface active:bg-surface-bright active:scale-95 text-headline-sm font-bold shadow-sm" onclick="adjustWeight(-1)" type="button">
+                  −
+                </button>
+<div class="flex flex-col items-center px-1">
+<span class="font-headline-metric-mobile text-headline-metric-mobile text-on-surface font-extrabold tracking-tight" id="weight-val">16.0</span>
+<button class="font-label-xs text-label-xs text-primary-fixed bg-surface-container hover:bg-surface-bright px-1.5 py-0.5 rounded mt-0.5 font-bold transition-colors" onclick="adjustWeight(2.5)" type="button">
+                    +2.5kg
+                  </button>
+</div>
+<button aria-label="Tambah Beban" class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-on-surface active:bg-surface-bright active:scale-95 text-headline-sm font-bold shadow-sm" onclick="adjustWeight(1)" type="button">
+                  +
+                </button>
+</div>
+</div>
+<!-- Reps Stepper Module -->
+<div class="p-2 rounded-lg bg-surface-container-high flex flex-col items-center">
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider mb-1 font-bold">Repetisi</span>
+<div class="flex items-center justify-between w-full">
+<button aria-label="Kurangi Repetisi" class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-on-surface active:bg-surface-bright active:scale-95 text-headline-sm font-bold shadow-sm" onclick="adjustReps(-1)" type="button">
+                  −
+                </button>
+<div class="flex flex-col items-center px-1">
+<span class="font-headline-metric-mobile text-headline-metric-mobile text-on-surface font-extrabold tracking-tight" id="reps-val">10</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant font-medium mt-0.5">Reps</span>
+</div>
+<button aria-label="Tambah Repetisi" class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-on-surface active:bg-surface-bright active:scale-95 text-headline-sm font-bold shadow-sm" onclick="adjustReps(1)" type="button">
+                  +
+                </button>
+</div>
+</div>
+</div>
+<!-- Confirm Set Button (Min 48px Touch Boundary) -->
+<button class="w-full h-12 rounded-xl bg-primary-container hover:bg-primary text-on-primary-container font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-2 shadow-md active:scale-98 transition-all" id="complete-set-btn" onclick="completeActiveSet()" type="button">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Selesaikan Set 2</span>
+</button>
+</div>
+<!-- SET 3: Pending Target State -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low shadow-sm opacity-85">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-outline font-label-md font-bold shrink-0">
+              3
+            </div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Set 3</span>
+<p class="font-body-md text-body-md text-on-surface-variant font-medium">16.0 kg × 10 reps target</p>
+</div>
+</div>
+<span class="font-label-xs text-label-xs px-2 py-1 rounded bg-surface-container text-on-surface-variant font-semibold">
+            Menunggu
+          </span>
+</div>
+</div>
+<!-- Sticky Compact Rest Timer Bar -->
+<div class="w-full p-2.5 rounded-xl bg-surface-container-high shadow-xl flex flex-col gap-1.5 mt-0.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed text-[18px] animate-pulse">timer</span>
+<div class="flex items-baseline gap-1">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold uppercase tracking-wider">Istirahat:</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-extrabold tracking-tight" id="rest-timer">00:45</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="px-2.5 py-1 rounded-lg bg-surface-container hover:bg-surface-bright text-primary text-label-md font-label-md active:scale-95 transition-all font-bold" onclick="addRestTime(15)" type="button">
+              +15 dtk
+            </button>
+<button class="px-3 py-1 rounded-lg bg-surface-container hover:bg-surface-bright text-on-surface-variant hover:text-on-surface text-label-md font-label-md active:scale-95 transition-all font-semibold" onclick="skipRestTime()" type="button">
+              Lewati
+            </button>
+</div>
+</div>
+<!-- Progress Track Line -->
+<div class="w-full h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary-container rounded-full transition-all duration-300" id="rest-progress-bar" style="width: 50%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple reactive micro-interactions for weight, reps, and timer
+  let currentWeight = 16.0;
+  let currentReps = 10;
+  let remainingSeconds = 45;
+  const totalRestSeconds = 90;
+  let restInterval = null;
+
+  function adjustWeight(val) {
+    currentWeight = Math.max(2, parseFloat((currentWeight + val).toFixed(1)));
+    const el = document.getElementById('weight-val');
+    if (el) el.textContent = currentWeight.toFixed(1);
+  }
+
+  function adjustReps(val) {
+    currentReps = Math.max(1, currentReps + val);
+    const el = document.getElementById('reps-val');
+    if (el) el.textContent = currentReps;
+  }
+
+  function updateRestDisplay() {
+    const timerEl = document.getElementById('rest-timer');
+    const barEl = document.getElementById('rest-progress-bar');
+    if (!timerEl || !barEl) return;
+    
+    const minutes = Math.floor(remainingSeconds / 60);
+    const seconds = remainingSeconds % 60;
+    timerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    
+    const pct = Math.max(0, Math.min(100, (remainingSeconds / totalRestSeconds) * 100));
+    barEl.style.width = pct + '%';
+  }
+
+  function addRestTime(seconds) {
+    remainingSeconds += seconds;
+    updateRestDisplay();
+  }
+
+  function skipRestTime() {
+    remainingSeconds = 0;
+    updateRestDisplay();
+    if (restInterval) clearInterval(restInterval);
+  }
+
+  function setFrame(frameNum) {
+    const btn1 = document.getElementById('pos-btn-1');
+    const btn2 = document.getElementById('pos-btn-2');
+    if (frameNum === 1) {
+      btn1.className = 'px-2 py-0.5 rounded-full bg-primary-container text-on-primary font-label-xs text-label-xs transition-all';
+      btn2.className = 'px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-xs text-label-xs transition-all';
+    } else {
+      btn2.className = 'px-2 py-0.5 rounded-full bg-primary-container text-on-primary font-label-xs text-label-xs transition-all';
+      btn1.className = 'px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-xs text-label-xs transition-all';
+    }
+  }
+
+  function completeActiveSet() {
+    const btn = document.getElementById('complete-set-btn');
+    if (btn) {
+      btn.innerHTML = `<span class="material-symbols-outlined text-[22px]">check</span><span>Bagus Sekali! Memulai Istirahat...</span>`;
+      btn.className = 'w-full h-12 rounded-xl bg-secondary text-on-secondary font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-2 shadow-md transition-all';
+      remainingSeconds = 60;
+      updateRestDisplay();
+    }
+  }
+
+  // Rest Timer Tick
+  restInterval = setInterval(() => {
+    if (remainingSeconds > 0) {
+      remainingSeconds -= 1;
+      updateRestDisplay();
+    }
+  }, 1000);
+</script></main></body></html>

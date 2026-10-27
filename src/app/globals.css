@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-jakarta), system-ui, sans-serif;
+
+  --color-primary: #ff5a2c;
+  --color-primary-soft: rgba(255, 90, 44, 0.12);
+  --color-primary-border: rgba(255, 90, 44, 0.24);
+  --color-success: #2ed47a;
+  --color-warning: #ffb800;
+  --color-error: #ff4d4d;
+
+  --color-surface: #0f1115;
+  --color-card: #181b22;
+  --color-interactive: #1e232d;
+  --color-line: #232733;
+
+  --color-ink: #ffffff;
+  --color-ink-secondary: #9aa3b2;
+  --color-ink-muted: #656e80;
+
+  --radius-card: 1.25rem;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+/* Angka metrik tidak boleh "goyang" saat stepper/berjalan */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Animasi flip dua frame untuk ExerciseAnimator */
+.animator .frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.animator .frame-a {
+  animation: flipA 1.8s steps(1, end) infinite;
+}
+.animator .frame-b {
+  animation: flipB 1.8s steps(1, end) infinite;
+}
+@keyframes flipA {
+  0%,
+  49.99% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes flipB {
+  0%,
+  49.99% {
+    opacity: 0;
+  }
+  50%,
+  100% {
+    opacity: 1;
+  }
+}
+.animator[data-paused="true"] .frame {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animator .frame {
+    animation: none;
+  }
+  .animator .frame-b {
+    opacity: 0;
+  }
+}
+
+/* Layout landscape ponsel: dua kolom tanpa scroll panjang.
+   Aktif HANYA di ponsel landscape (bukan tablet/desktop). */
+@media (orientation: landscape) and (max-height: 500px) {
+  .workout-main {
+    display: grid !important;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    height: 100dvh !important;
+    overflow: hidden !important;
+  }
+  .workout-visual {
+    grid-column: span 5 / span 5;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    height: 100dvh !important;
+    overflow: hidden !important;
+    padding-inline: 1.5rem;
+  }
+  .workout-visual .animator-box {
+    height: 38dvh !important;
+    margin-top: 0 !important;
+  }
+  .workout-controls {
+    grid-column: span 7 / span 7;
+    display: flex !important;
+    flex-direction: column;
+    height: 100dvh !important;
+    border-left: 1px solid var(--color-line);
+  }
+  .workout-scroll {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding-inline: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  .workout-footer {
+    border-top: 1px solid var(--color-line);
+    background: var(--color-card);
+    padding-inline: 1.5rem !important;
+  }
+}

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-variant":"#333539","on-tertiary":"#003547","on-primary-fixed-variant":"#881f00","background":"#111317","surface-container-low":"#1a1c20","primary-container":"#ff5a2c","on-primary":"#601300","inverse-surface":"#e2e2e8","outline":"#ab8981","on-surface-variant":"#e4beb5","surface-bright":"#37393e","on-background":"#e2e2e8","primary-fixed":"#ffdbd1","surface-dim":"#111317","error":"#ffb4ab","inverse-on-surface":"#2f3035","tertiary":"#6fd2ff","error-container":"#93000a","on-secondary-container":"#004824","secondary":"#41e185","on-secondary-fixed-variant":"#00522a","secondary-fixed":"#64fe9f","outline-variant":"#5b403a","tertiary-fixed-dim":"#6fd2ff","on-error":"#690005","on-surface":"#e2e2e8","on-primary-container":"#571100","on-tertiary-fixed":"#001f2b","primary-fixed-dim":"#ffb5a1","surface-container":"#1e2024","tertiary-fixed":"#c0e8ff","secondary-container":"#00c16a","surface-tint":"#ffb5a1","surface-container-high":"#282a2e","surface":"#111317","on-secondary":"#00391b","on-tertiary-fixed-variant":"#004d66","secondary-fixed-dim":"#41e185","primary":"#ffb5a1","surface-container-lowest":"#0c0e12","on-error-container":"#ffdad6","on-tertiary-container":"#002f40","surface-container-highest":"#333539","tertiary-container":"#009ecd","on-primary-fixed":"#3b0800","inverse-primary":"#b22c00","on-secondary-fixed":"#00210d"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"margin":"1.25rem","space-sm":"0.5rem","space-lg":"1rem","space-xl":"1.5rem","gutter":"1rem","space-xs":"0.25rem","space-md":"0.75rem"},"fontFamily":{"body-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"stat-display":["Plus Jakarta Sans"],"stat-compact":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"]},"fontSize":{"body-lg":["16px",{"lineHeight":"24px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-md":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"stat-display":["32px",{"lineHeight":"38px","letterSpacing":"-0.03em","fontWeight":"800"}],"stat-compact":["24px",{"lineHeight":"30px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-xl":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"800"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between py-space-xl px-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col gap-space-xl"><div class="flex items-center gap-space-md px-space-sm"><div class="w-9 h-9 rounded-xl bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary font-bold text-[20px]">token</span></div><div class="flex flex-col"><span class="font-headline-md text-headline-md text-on-surface tracking-tight leading-none">Raga UI</span><span class="font-label-sm text-label-sm text-on-surface-variant">Design System Spec</span></div></div><div class="flex flex-col gap-space-xs"><span class="px-space-sm font-label-sm text-label-sm uppercase tracking-wider text-outline">Matrix Overview</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-label-md rounded-xl shadow-[0_4px_20px_rgba(255,90,44,0.15)]"><a aria-current="page" class="flex items-center gap-space-md px-space-md py-space-sm transition-colors bg-primary-container text-on-primary-container font-label-md rounded-xl shadow-[0_4px_20px_rgba(255,90,44,0.15)]" data-path="overview-matrix" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span>All States Matrix</a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="button-states" href="#"><span class="material-symbols-outlined text-[20px]">smart_button</span>Buttons &amp; Actions</a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="input-stepper-states" href="#"><span class="material-symbols-outlined text-[20px]">unfold_more</span>Steppers &amp; Inputs</a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="selectable-cards" href="#"><span class="material-symbols-outlined text-[20px]">style</span>Selectable Cards</a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="set-row-states" href="#"><span class="material-symbols-outlined text-[20px]">fitness_center</span>Workout Set Rows</a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="rest-timer-overlays" href="#"><span class="material-symbols-outlined text-[20px]">timer</span>Rest Timer &amp; Toasts</a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="edge-cases-offline" href="#"><span class="material-symbols-outlined text-[20px]">warning</span>Edge Cases &amp; Errors</a></nav></div></div><div class="flex flex-col gap-space-md p-space-md rounded-xl bg-surface-container"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant">Environment</span><span class="px-space-xs py-[2px] rounded font-label-sm text-[10px] bg-secondary-container text-on-secondary-container font-semibold">V1.4 PROD</span></div><div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm"><span>Dark Mode Matrix</span><span class="text-secondary flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">check_circle</span>Active</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/85 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-space-xl flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-md"><span class="font-headline-md text-headline-md text-on-surface tracking-tight">Raga UI — States &amp; Edge Cases</span><span class="hidden xl:inline-flex items-center px-space-sm py-[2px] rounded-full font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant">Canvas 390px Mobile &amp; Desktop Spec</span></div><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="flex items-center gap-1 px-space-sm py-space-xs rounded-lg font-label-sm text-label-sm bg-surface-container text-tertiary"><span class="material-symbols-outlined text-[16px]">palette</span>#FF5A2C Accent</span><span class="flex items-center gap-1 px-space-sm py-space-xs rounded-lg font-label-sm text-label-sm bg-surface-container text-secondary"><span class="material-symbols-outlined text-[16px]">check</span>#41E185 Success</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative w-full pt-16 bg-background min-h-screen"><div class="flex flex-col w-full">
+<div class="p-space-xl flex flex-col gap-space-xl max-w-7xl mx-auto w-full">
+<!-- Header Meta & Control Strip -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg bg-surface-container-low p-space-xl rounded-xl">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-sm py-[2px] rounded-full font-label-sm text-label-sm bg-primary-container/20 text-primary-fixed uppercase tracking-wider font-semibold">Specs Matrix V1.4</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Edge Cases &amp; Error Handling</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">System Exception States</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Dokumentasi visual 5 skenario kritis antarmuka Raga UI: penanganan kegagalan sinkronisasi, fallback aset grafis, indikator pemuatan skeleton, keadaan data nihil (empty state), serta validasi formulir real-time.
+        </p>
+</div>
+<div class="flex items-center gap-space-md bg-surface-container px-space-md py-space-sm rounded-xl">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline">Target Kanvas</span>
+<span class="font-label-md text-label-md text-on-surface">390px Mobile Viewport &amp; Grid</span>
+</div>
+<div class="w-px h-8 bg-surface-variant"></div>
+<div class="flex items-center gap-space-xs text-secondary">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+<span class="font-label-md text-label-md">Accessible (AA+)</span>
+</div>
+</div>
+</div>
+<!-- Main Grid: Showcase 5 States -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<!-- STATE 1: Error Toast (Set Save Failure) -->
+<div class="lg:col-span-12 xl:col-span-7 flex flex-col gap-space-md bg-surface-container-low p-space-xl rounded-xl shadow-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-error">State 01</span>
+<span class="text-outline font-label-sm text-label-sm">•</span>
+<span class="font-label-md text-label-md text-on-surface">Toast Notifikasi • Simpan Set Gagal</span>
+</div>
+<span class="px-space-sm py-[2px] rounded font-label-sm text-[11px] bg-error-container text-on-error-container font-semibold">Async Telemetry</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Muncul melayang di bagian bawah layar saat operasi asynchronous simpan repetisi/beban gagal dikirim ke backend akibat timeout jaringan atau kendala konektivitas gym.
+        </p>
+<!-- Preview Canvas Simulator -->
+<div class="relative w-full h-80 rounded-xl bg-surface-container-lowest p-space-lg flex flex-col justify-between overflow-hidden">
+<!-- Background Workout Session Context (Mocked) -->
+<div class="flex flex-col gap-space-sm opacity-35 pointer-events-none select-none">
+<div class="flex justify-between items-center text-on-surface">
+<span class="font-body-lg text-body-lg">Bench Press (Dumbbell)</span>
+<span class="font-label-sm text-label-sm text-secondary">Set 3 / 4 Selesai</span>
+</div>
+<div class="flex items-center justify-between bg-surface-container p-space-md rounded-lg">
+<span class="font-label-md text-label-md">Set 3 • 28 KG x 10 REPS</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+</div>
+<div class="flex items-center justify-between bg-surface-container p-space-md rounded-lg">
+<span class="font-label-md text-label-md">Set 4 • 28 KG x 8 REPS</span>
+<span class="material-symbols-outlined text-outline text-[20px]">radio_button_unchecked</span>
+</div>
+</div>
+<!-- The Floating Error Toast Notification -->
+<div class="relative z-10 w-full mx-auto max-w-md bg-error-container/95 backdrop-blur-md rounded-xl p-space-md shadow-2xl flex items-center justify-between gap-space-md animate-bounce-short">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-on-error flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-error text-[22px]">error</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-lg text-body-lg text-on-error-container truncate leading-tight">Gagal menyimpan, coba lagi</span>
+<span class="font-label-sm text-label-sm text-on-error-container/80 truncate">Set 3 belum tercatat di server offline</span>
+</div>
+</div>
+<button class="shrink-0 px-space-md py-space-xs rounded-lg bg-surface text-on-surface font-label-md text-label-md hover:bg-surface-bright active:scale-95 transition-all flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-primary-container">refresh</span>
+<span>Coba lagi</span>
+</button>
+</div>
+<!-- Spec Footer details -->
+<div class="flex justify-between items-center text-outline font-label-sm text-[11px] pt-space-xs">
+<span>Elevation: 3 (Overlay / 0px 12px 32px rgba(0,0,0,0.5))</span>
+<span>Dismissable: Auto (5000ms) or Manual Action</span>
+</div>
+</div>
+</div>
+<!-- STATE 2: Image Failed to Load (Fallback Placeholder) -->
+<div class="lg:col-span-12 xl:col-span-5 flex flex-col gap-space-md bg-surface-container-low p-space-xl rounded-xl shadow-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-outline"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">State 02</span>
+<span class="text-outline font-label-sm text-label-sm">•</span>
+<span class="font-label-md text-label-md text-on-surface">Fallback Media • Gambar Latihan</span>
+</div>
+<span class="px-space-sm py-[2px] rounded font-label-sm text-[11px] bg-surface-variant text-on-surface font-semibold">CDN Fallback</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Penyajian visual aman saat aset demonstrasi video atau gambar panduan gerak gagal dimuat karena sambungan seluler terputus.
+        </p>
+<!-- Preview Card Box (Standard exercise media aspect ratio ~210px) -->
+<div class="flex flex-col gap-space-md">
+<div class="relative w-full h-52 rounded-xl bg-surface-container flex flex-col items-center justify-center p-space-lg overflow-hidden group">
+<!-- Subtle dashed internal guide -->
+<div class="absolute inset-3 rounded-lg flex flex-col items-center justify-center gap-space-sm bg-surface-container-low/60">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[32px]">broken_image</span>
+</div>
+<div class="flex flex-col items-center text-center">
+<span class="font-body-lg text-body-lg text-on-surface">Gambar tidak tersedia</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Panduan teknik "Incline Barbell Press"</span>
+</div>
+<!-- Inline Retry Pill -->
+<button class="mt-space-xs inline-flex items-center gap-1.5 px-space-md py-1.5 rounded-full bg-surface-variant hover:bg-surface-bright text-on-surface font-label-sm text-label-sm transition-transform active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">replay</span>
+<span>Muat ulang aset</span>
+</button>
+</div>
+<!-- Corner Badge -->
+<span class="absolute top-4 left-4 px-space-xs py-[2px] rounded font-label-sm text-[10px] bg-surface-container-highest text-outline uppercase tracking-wider">Asset 404 Cached</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm px-space-xs">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-outline">info</span> Dimensi Acuan: 350x210px (16:9)</span>
+<span class="text-tertiary font-label-sm">Offline Vector Shield</span>
+</div>
+</div>
+</div>
+<!-- STATE 3: Loading Skeleton (Dashboard Day Cards) -->
+<div class="lg:col-span-12 xl:col-span-6 flex flex-col gap-space-md bg-surface-container-low p-space-xl rounded-xl shadow-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-tertiary">State 03</span>
+<span class="text-outline font-label-sm text-label-sm">•</span>
+<span class="font-label-md text-label-md text-on-surface">Skeleton Loading • Kartu Jadwal Harian</span>
+</div>
+<span class="px-space-sm py-[2px] rounded font-label-sm text-[11px] bg-tertiary-container/30 text-tertiary font-semibold">Tonal Shimmer</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Pola shimmer non-blocking untuk kartu jadwal harian saat sinkronisasi profil awal aplikasi berjalan. Mempertahankan ritme tata letak tanpa pergeseran layout mendadak (CLS = 0).
+        </p>
+<!-- Skeleton Mockups Display -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<!-- Skeleton Card 1 (Active Day Structure) -->
+<div class="flex flex-col gap-space-md p-space-lg rounded-xl bg-surface-container shadow-sm relative overflow-hidden">
+<!-- Pulsing Shimmer overlay -->
+<div class="flex justify-between items-center">
+<div class="w-16 h-5 rounded-full bg-surface-container-highest animate-pulse"></div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest animate-pulse"></div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="w-4/5 h-6 rounded-lg bg-surface-container-highest animate-pulse"></div>
+<div class="w-1/2 h-4 rounded-lg bg-surface-container-high animate-pulse"></div>
+</div>
+<!-- Bullet list exercise skeletons -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+<div class="w-3/4 h-3.5 rounded bg-surface-container-high animate-pulse"></div>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+<div class="w-2/3 h-3.5 rounded bg-surface-container-high animate-pulse"></div>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+<div class="w-1/2 h-3.5 rounded bg-surface-container-high animate-pulse"></div>
+</div>
+</div>
+<!-- Action Pill Skeleton -->
+<div class="w-full h-11 rounded-xl bg-surface-container-highest mt-space-sm animate-pulse"></div>
+</div>
+<!-- Skeleton Card 2 (Adjacent Day Structure) -->
+<div class="flex flex-col gap-space-md p-space-lg rounded-xl bg-surface-container shadow-sm relative overflow-hidden opacity-75">
+<div class="flex justify-between items-center">
+<div class="w-14 h-5 rounded-full bg-surface-container-highest animate-pulse"></div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest animate-pulse"></div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="w-3/5 h-6 rounded-lg bg-surface-container-highest animate-pulse"></div>
+<div class="w-2/5 h-4 rounded-lg bg-surface-container-high animate-pulse"></div>
+</div>
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+<div class="w-4/5 h-3.5 rounded bg-surface-container-high animate-pulse"></div>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+<div class="w-3/5 h-3.5 rounded bg-surface-container-high animate-pulse"></div>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+<div class="w-1/3 h-3.5 rounded bg-surface-container-high animate-pulse"></div>
+</div>
+</div>
+<div class="w-full h-11 rounded-xl bg-surface-container-highest mt-space-sm animate-pulse"></div>
+</div>
+</div>
+<div class="flex items-center justify-between text-outline font-label-sm text-[11px]">
+<span>Shimmer Timing: CSS Pulse / 1.5s Ease In-Out</span>
+<span class="text-on-surface-variant font-medium">Auto-populates to live state</span>
+</div>
+</div>
+<!-- STATE 4: Empty State (Belum Ada Jadwal) -->
+<div class="lg:col-span-12 xl:col-span-6 flex flex-col gap-space-md bg-surface-container-low p-space-xl rounded-xl shadow-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary">State 04</span>
+<span class="text-outline font-label-sm text-label-sm">•</span>
+<span class="font-label-md text-label-md text-on-surface">Empty State • Dashboard Jadwal</span>
+</div>
+<span class="px-space-sm py-[2px] rounded font-label-sm text-[11px] bg-primary-container/20 text-primary-fixed font-semibold">Zero Data Point</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Diberikan kepada pengguna yang baru pertama kali membuka tab rencana latihan atau setelah menyelesaikan siklus program mingguan tanpa agenda lanjutan.
+        </p>
+<!-- Empty State Component Canvas -->
+<div class="relative w-full rounded-xl bg-surface-container p-space-xl flex flex-col items-center text-center justify-center overflow-hidden min-h-[310px]">
+<!-- Soft radial warm ambient glow behind illustration -->
+<div class="absolute w-44 h-44 rounded-full bg-primary-container/10 filter blur-3xl pointer-events-none -top-4"></div>
+<!-- Minimal Geometric Fitness Illustration -->
+<div class="relative z-10 w-20 h-20 rounded-2xl bg-surface-container-high flex items-center justify-center mb-space-md shadow-lg">
+<div class="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[32px]">calendar_today</span>
+</div>
+<span class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary text-[14px]">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</span>
+</div>
+<!-- Content Headline & Body -->
+<div class="relative z-10 max-w-sm flex flex-col gap-space-xs mb-space-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">Belum ada jadwal</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Mulai langkah sehatmu dengan menyusun jadwal latihan mingguan yang sesuai dengan targetmu.
+            </p>
+</div>
+<!-- Primary CTA Button (56px ergonomic thumb hit target) -->
+<button class="relative z-10 w-full max-w-xs h-14 px-space-xl rounded-2xl bg-primary-container text-on-primary-container font-label-md text-label-md font-bold shadow-[0_4px_20px_rgba(255,90,44,0.25)] hover:brightness-110 active:scale-98 transition-all flex items-center justify-center gap-space-sm cursor-pointer">
+<span class="material-symbols-outlined text-[20px] text-on-primary-container">add_circle</span>
+<span>Susun Jadwal</span>
+</button>
+</div>
+<div class="flex items-center justify-between text-outline font-label-sm text-[11px]">
+<span>Bottom Sticky Option Available on Mobile Canvas</span>
+<span class="text-secondary flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">bolt</span>Quick Template Suggested</span>
+</div>
+</div>
+<!-- STATE 5: Form Validation Error (Under Input Field) -->
+<div class="lg:col-span-12 flex flex-col gap-space-md bg-surface-container-low p-space-xl rounded-xl shadow-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-error">State 05</span>
+<span class="text-outline font-label-sm text-label-sm">•</span>
+<span class="font-label-md text-label-md text-on-surface">Form Input • State Validasi Error &amp; Perbandingan Normal</span>
+</div>
+<span class="px-space-sm py-[2px] rounded font-label-sm text-[11px] bg-error-container text-on-error-container font-semibold">Inline Reactive Check</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Validasi ketat input angka metrik maupun formulir profil latihan. Baris formulir menampilkan visual perbandingan langsung antara kondisi aktif valid (normal) dan kondisi input bermasalah (error feedback).
+        </p>
+<!-- Comparative Form Fields Container -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-xl bg-surface-container p-space-xl rounded-xl">
+<!-- Column A: Normal / Valid State -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface" for="field-target-reps">Target Repetisi per Set</label>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Valid
+              </span>
+</div>
+<!-- Input Box Valid -->
+<div class="relative flex items-center">
+<input class="w-full h-14 px-space-md pr-12 rounded-xl bg-surface-container-high text-on-surface font-body-lg text-body-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-sm" id="field-target-reps" readonly="" type="text" value="12 REPS"/>
+<div class="absolute right-3.5 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+</div>
+<!-- Helper Text Valid -->
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary">info</span>
+<span>Sesuai target hipertrofi standar (8 - 15 reps).</span>
+</div>
+</div>
+<!-- Column B: Validation Error State -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-error" for="field-email-profile">Email Akun Latihan</label>
+<span class="font-label-sm text-label-sm text-error flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px]">error</span>
+                Perlu Koreksi
+              </span>
+</div>
+<!-- Input Box Error with crisp red visual accents -->
+<div class="relative flex items-center">
+<input class="w-full h-14 px-space-md pr-12 rounded-xl bg-error-container/20 text-on-surface font-body-lg text-body-lg shadow-[0_0_12px_rgba(255,77,77,0.18)] focus:outline-none" id="field-email-profile" readonly="" type="text" value="aditya.raga@workout"/>
+<!-- Error Icon embedded inside right edge -->
+<div class="absolute right-3.5 flex items-center pointer-events-none text-error">
+<span class="material-symbols-outlined text-[22px]">warning</span>
+</div>
+</div>
+<!-- Crisp Indonesian Error Message Under Input -->
+<div class="flex items-center gap-1.5 text-error font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">error</span>
+<span class="font-semibold">Format email tidak valid. Masukkan domain lengkap (misal: @gmail.com).</span>
+</div>
+</div>
+</div>
+<!-- Metric Stepper Edge Case Demonstration: Overlimit Input Error -->
+<div class="bg-surface-container p-space-lg rounded-xl flex flex-col md:flex-row items-center justify-between gap-space-lg">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Beban Tambahan (KG) • Batas Kapasitas Beban</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Contoh peringatan angka melebihi batas beban dumbbell gym (Maksimal 60 KG).</span>
+</div>
+<div class="flex items-center gap-space-md">
+<!-- Stepper Minus -->
+<button class="w-12 h-12 rounded-xl bg-surface-container-high text-on-surface flex items-center justify-center hover:bg-surface-bright active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">remove</span>
+</button>
+<!-- Stepper Display in Warning State -->
+<div class="flex flex-col items-center justify-center px-space-lg py-1 rounded-xl bg-error-container/25">
+<span class="font-stat-compact text-stat-compact text-error leading-none">65.0</span>
+<span class="font-label-sm text-[10px] text-error font-bold uppercase tracking-wider">KG (Overlimit)</span>
+</div>
+<!-- Stepper Plus Disabled -->
+<button class="w-12 h-12 rounded-xl bg-surface-container-high/40 text-outline cursor-not-allowed flex items-center justify-center" disabled="">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- System Design Principles Summary Strip -->
+<div class="p-space-lg rounded-xl bg-surface-container-low flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-lg bg-primary-container/20 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">rule</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Panduan Perilaku Error Raga UI</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Semua salinan kesalahan menggunakan instruksi lugas tanpa istilah kode teknis (user-friendly language).</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="px-space-md py-space-xs rounded-lg bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Haptic Feedback: Heavy Warning</span>
+<span class="px-space-md py-space-xs rounded-lg bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Contrast Ratio: 4.8:1 Min</span>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

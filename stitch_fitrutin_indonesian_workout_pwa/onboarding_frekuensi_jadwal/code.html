@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary-container": "#5a0c00", "error-container": "#93000a", "inverse-surface": "#dfe2ee", "secondary-fixed": "#6ffbbe", "on-primary-fixed-variant": "#8c1900", "primary-fixed": "#ffdad2", "surface-container-highest": "#31353e", "on-error-container": "#ffdad6", "on-tertiary-container": "#0e009a", "on-secondary-fixed-variant": "#005236", "on-secondary": "#003824", "on-primary-fixed": "#3d0600", "tertiary": "#c0c1ff", "surface-container": "#1c2028", "surface-dim": "#0f131c", "primary-fixed-dim": "#ffb4a3", "secondary": "#4edea3", "background": "#0f131c", "on-tertiary-fixed-variant": "#2f2ebe", "on-tertiary-fixed": "#07006c", "on-surface-variant": "#e3beb6", "error": "#ffb4ab", "tertiary-container": "#8285ff", "inverse-on-surface": "#2c3039", "surface-container-lowest": "#0a0e16", "outline-variant": "#5b403a", "secondary-fixed-dim": "#4edea3", "on-error": "#690005", "tertiary-fixed": "#e1e0ff", "inverse-primary": "#b52603", "surface-container-low": "#181c24", "surface-tint": "#ffb4a3", "on-primary": "#630f00", "surface-bright": "#353942", "surface": "#0f131c", "outline": "#aa8982", "on-secondary-container": "#00311f", "on-background": "#dfe2ee", "on-surface": "#dfe2ee", "on-tertiary": "#1000a9", "tertiary-fixed-dim": "#c0c1ff", "on-secondary-fixed": "#002113", "surface-variant": "#31353e", "surface-container-high": "#262a33", "primary-container": "#ff5a36", "secondary-container": "#00a572", "primary": "#ffb4a3" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "gutter": "1rem", "space-xl": "1.5rem", "space-lg": "1rem", "margin": "1rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "space-md": "0.75rem" }, fontFamily: { "display-timer-mobile": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "label-xs": ["Plus Jakarta Sans"], "display-timer": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "headline-metric-mobile": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-metric": ["Plus Jakarta Sans"] }, fontSize: { "display-timer-mobile": ["40px", { lineHeight: "44px", fontWeight: "800" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }], "label-xs": ["10px", { lineHeight: "12px", fontWeight: "700" }], "display-timer": ["48px", { lineHeight: "52px", fontWeight: "800" }], "label-lg": ["14px", { lineHeight: "20px", fontWeight: "600" }], "headline-metric-mobile": ["26px", { lineHeight: "30px", fontWeight: "700" }], "headline-md": ["20px", { lineHeight: "28px", fontWeight: "600" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "500" }], "label-md": ["12px", { lineHeight: "16px", fontWeight: "600" }], "headline-lg": ["24px", { lineHeight: "32px", fontWeight: "700" }], "headline-metric": ["32px", { lineHeight: "36px", fontWeight: "700" }] } } } }</script><style>@layer base { html, body { width: 100vw; min-height: 100vh; margin: 0; padding: 0; background-color: #0f131c; color: #dfe2ee; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-screen selection:bg-primary-container selection:text-white"><header class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl pt-safe"><div class="h-16 px-gutter max-w-[480px] mx-auto flex items-center justify-between"><button aria-label="Kembali" class="w-11 h-11 -ml-2 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><div class="flex flex-col items-center flex-1 px-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight truncate max-w-[200px]">Jadwal Mingguan</span><div class="flex items-center gap-1.5 mt-1"><span class="w-6 h-1 rounded-full bg-primary-container"></span><span class="w-1.5 h-1 rounded-full bg-surface-container-highest"></span><span class="w-1.5 h-1 rounded-full bg-surface-container-highest"></span><span class="w-1.5 h-1 rounded-full bg-surface-container-highest"></span></div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="flex flex-col flex-1 w-full max-w-[480px] mx-auto px-gutter pt-16 pb-24 bg-surface"><div class="flex flex-col w-full pb-6 space-y-space-lg">
+<!-- Progress Pill & Encouragement Capsule -->
+<div class="flex items-center justify-between pt-1">
+<div class="inline-flex items-center gap-space-xs px-3 py-1 rounded-full bg-surface-container-high text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="font-label-md text-label-md">Langkah 3 dari 4</span>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/20 text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-xs text-label-xs tracking-wide uppercase">Konsistensi &gt; Beban</span>
+</div>
+</div>
+<!-- Editorial Headline Section -->
+<div class="space-y-space-xs">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+      Berapa hari seminggu?
+    </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+      Pilih frekuensi latihan yang paling realistis dan konsisten untuk rutinitasmu.
+    </p>
+</div>
+<!-- Visual Motivation Snapshot -->
+<div class="relative w-full h-32 rounded-xl overflow-hidden shadow-md">
+<div class="w-full h-full bg-cover bg-center" data-alt="An energetic Indonesian fitness athlete preparing gym equipment in a sleek dark boutique fitness studio with subtle neon coral and emerald ambient lighting, focusing intently on a tailored workout plan, cinematic composition with shallow depth of field." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDPiBJdzkGwKHYBfCTCLDg_AV6f_Vv3tWWle6RxbrQiAwDHPaS_scQURrjdtNW6DxkVxiktMEDkql21HlZ26sUvdYW2xWg78oyrDRJDsTVa91oFEhW3I7aCs95KND2SudEjERAatzvhahabDeKpTG5O-CoVtAJbL96qhqths-Op_-NCq3qhKBzg89MyfgX55NBRXzYAk1g1ys2XWd9Lh9TQGwG_xENtEc0LnMNEICqf2_qIeVPN5StiLA')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-primary-container flex items-center justify-center text-white shadow-sm">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Ritme Berkelanjutan</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Adaptif dengan jadwal harian</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-highest text-primary font-label-xs text-label-xs">
+        Rekomendasi Pelatih
+      </span>
+</div>
+</div>
+<!-- Frequency Grid (2, 3, 4, 5 Hari) -->
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-md text-label-md text-on-surface-variant tracking-wider uppercase">Target Mingguan</span>
+<span class="font-label-xs text-label-xs text-outline">Ketuk untuk mengganti</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm" id="freq-selector-container">
+<!-- 2 Hari -->
+<button class="freq-card group relative p-space-md rounded-xl bg-surface-container-low text-left transition-all active:scale-[0.98] shadow-sm hover:bg-surface-container cursor-pointer" data-freq="2" type="button">
+<div class="flex items-center justify-between">
+<span class="font-headline-metric-mobile text-headline-metric-mobile text-on-surface">2 Hari</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[22px]">fitness_center</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Pemeliharaan dasar</p>
+<span class="inline-block mt-2 font-label-xs text-label-xs text-outline">Cocok untuk jadwal padat</span>
+</button>
+<!-- 3 Hari -->
+<button class="freq-card group relative p-space-md rounded-xl bg-surface-container-low text-left transition-all active:scale-[0.98] shadow-sm hover:bg-surface-container cursor-pointer" data-freq="3" type="button">
+<div class="flex items-center justify-between">
+<span class="font-headline-metric-mobile text-headline-metric-mobile text-on-surface">3 Hari</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[22px]">monitoring</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Seimbang &amp; ideal</p>
+<span class="inline-block mt-2 font-label-xs text-label-xs text-outline">Full body split</span>
+</button>
+<!-- 4 Hari (SELECTED) -->
+<button class="freq-card relative p-space-md rounded-xl bg-surface-container-high text-left shadow-lg shadow-primary-container/15 transition-all active:scale-[0.98] cursor-pointer" data-freq="4" type="button">
+<div class="absolute -top-2.5 right-3 px-2 py-0.5 rounded-full bg-primary-container text-white font-label-xs text-label-xs shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span>Paling Populer</span>
+</div>
+<div class="flex items-center justify-between mt-0.5">
+<span class="font-headline-metric-mobile text-headline-metric-mobile text-primary">4 Hari</span>
+<div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+</div>
+<p class="font-label-md text-label-md text-on-surface font-semibold mt-1">Progres Maksimal</p>
+<span class="inline-block mt-2 font-label-xs text-label-xs text-primary-fixed-dim">Upper / Lower Split</span>
+</button>
+<!-- 5 Hari -->
+<button class="freq-card group relative p-space-md rounded-xl bg-surface-container-low text-left transition-all active:scale-[0.98] shadow-sm hover:bg-surface-container cursor-pointer" data-freq="5" type="button">
+<div class="flex items-center justify-between">
+<span class="font-headline-metric-mobile text-headline-metric-mobile text-on-surface">5 Hari</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[22px]">pace</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Tingkat Lanjut</p>
+<span class="inline-block mt-2 font-label-xs text-label-xs text-outline">Push / Pull / Legs</span>
+</button>
+</div>
+</div>
+<!-- Live Schedule Preview Section -->
+<div class="p-space-lg rounded-xl bg-surface-container space-y-space-md shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">view_timeline</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Pratinjau Jadwal Mingguanmu:</h2>
+<p class="font-label-xs text-label-xs text-on-surface-variant">Pola latihan berirama 4 hari aktif</p>
+</div>
+</div>
+<span class="text-secondary font-label-xs text-label-xs px-2 py-1 rounded bg-secondary/10 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span> Teratur
+      </span>
+</div>
+<!-- 7 Weekday Horizontal Strip -->
+<div class="grid grid-cols-7 gap-1 text-center" id="days-pill-strip">
+<!-- Sen (Aktif - Coral) -->
+<div class="flex flex-col items-center py-2 px-1 rounded-lg bg-primary-container text-white shadow-sm">
+<span class="font-label-xs text-label-xs opacity-90">Sen</span>
+<span class="font-headline-sm text-headline-sm font-bold">1</span>
+<span class="w-1.5 h-1.5 rounded-full bg-white mt-1"></span>
+</div>
+<!-- Sel (Aktif - Emerald) -->
+<div class="flex flex-col items-center py-2 px-1 rounded-lg bg-secondary-container text-white shadow-sm">
+<span class="font-label-xs text-label-xs opacity-90">Sel</span>
+<span class="font-headline-sm text-headline-sm font-bold">2</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed mt-1"></span>
+</div>
+<!-- Rab (Istirahat) -->
+<div class="flex flex-col items-center py-2 px-1 rounded-lg bg-surface-container-high text-on-surface-variant/70">
+<span class="font-label-xs text-label-xs">Rab</span>
+<span class="material-symbols-outlined text-[18px] my-0.5 text-outline">bed</span>
+<span class="w-1.5 h-1.5 rounded-full bg-transparent mt-1"></span>
+</div>
+<!-- Kam (Aktif - Coral) -->
+<div class="flex flex-col items-center py-2 px-1 rounded-lg bg-primary-container text-white shadow-sm">
+<span class="font-label-xs text-label-xs opacity-90">Kam</span>
+<span class="font-headline-sm text-headline-sm font-bold">3</span>
+<span class="w-1.5 h-1.5 rounded-full bg-white mt-1"></span>
+</div>
+<!-- Jum (Istirahat) -->
+<div class="flex flex-col items-center py-2 px-1 rounded-lg bg-surface-container-high text-on-surface-variant/70">
+<span class="font-label-xs text-label-xs">Jum</span>
+<span class="material-symbols-outlined text-[18px] my-0.5 text-outline">bed</span>
+<span class="w-1.5 h-1.5 rounded-full bg-transparent mt-1"></span>
+</div>
+<!-- Sab (Aktif - Emerald) -->
+<div class="flex flex-col items-center py-2 px-1 rounded-lg bg-secondary-container text-white shadow-sm">
+<span class="font-label-xs text-label-xs opacity-90">Sab</span>
+<span class="font-headline-sm text-headline-sm font-bold">4</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed mt-1"></span>
+</div>
+<!-- Min (Istirahat) -->
+<div class="flex flex-col items-center py-2 px-1 rounded-lg bg-surface-container-high text-on-surface-variant/70">
+<span class="font-label-xs text-label-xs">Min</span>
+<span class="material-symbols-outlined text-[18px] my-0.5 text-outline">bed</span>
+<span class="w-1.5 h-1.5 rounded-full bg-transparent mt-1"></span>
+</div>
+</div>
+<!-- Workout Day Details List -->
+<div class="space-y-space-xs pt-1">
+<!-- Sen -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2.5">
+<span class="w-9 h-9 rounded-md bg-primary-container/20 text-primary flex items-center justify-center font-label-md text-label-md font-bold">
+            Sen
+          </span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Kaki &amp; Bokong</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Fokus Lower Body Primer • 45 Menit</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px]">fitness_center</span>
+</div>
+<!-- Sel -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2.5">
+<span class="w-9 h-9 rounded-md bg-secondary-container/20 text-secondary flex items-center justify-center font-label-md text-label-md font-bold">
+            Sel
+          </span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Punggung &amp; Dada</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Postur &amp; Upper Body • 45 Menit</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]">sports_gymnastics</span>
+</div>
+<!-- Rab (Istirahat) -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-lowest/60 text-outline">
+<div class="flex items-center gap-2.5">
+<span class="w-9 h-9 rounded-md bg-surface-container-high text-outline flex items-center justify-center font-label-md text-label-md font-bold">
+            Rab
+          </span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-outline">Istirahat &amp; Pemulihan Aktif</span>
+<span class="font-label-xs text-label-xs text-outline/80">Jalan santai atau stretching ringan</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">hotel</span>
+</div>
+<!-- Kam -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2.5">
+<span class="w-9 h-9 rounded-md bg-primary-container/20 text-primary flex items-center justify-center font-label-md text-label-md font-bold">
+            Kam
+          </span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Kaki &amp; Bahu</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Penguatan Sendi • 40 Menit</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px]">exercise</span>
+</div>
+<!-- Jum (Istirahat) -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-lowest/60 text-outline">
+<div class="flex items-center gap-2.5">
+<span class="w-9 h-9 rounded-md bg-surface-container-high text-outline flex items-center justify-center font-label-md text-label-md font-bold">
+            Jum
+          </span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-outline">Istirahat Penuh</span>
+<span class="font-label-xs text-label-xs text-outline/80">Regenerasi glikogen tubuh</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">hotel</span>
+</div>
+<!-- Sab -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2.5">
+<span class="w-9 h-9 rounded-md bg-secondary-container/20 text-secondary flex items-center justify-center font-label-md text-label-md font-bold">
+            Sab
+          </span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Full Body Express</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Kalori Burn • 35 Menit</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]">flash_on</span>
+</div>
+<!-- Min (Istirahat) -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-lowest/60 text-outline">
+<div class="flex items-center gap-2.5">
+<span class="w-9 h-9 rounded-md bg-surface-container-high text-outline flex items-center justify-center font-label-md text-label-md font-bold">
+            Min
+          </span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-outline">Istirahat &amp; Rehat Mental</span>
+<span class="font-label-xs text-label-xs text-outline/80">Persiapan minggu berikutnya</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">hotel</span>
+</div>
+</div>
+<!-- Recovery Science Note Pill -->
+<div class="p-space-md rounded-lg bg-surface-container-high flex items-start gap-space-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">verified</span>
+<p class="font-body-md text-body-md text-on-surface leading-snug">
+<span class="text-secondary font-semibold">Pemulihan Pintar:</span> Otot punya waktu istirahat 48 jam sebelum dilatih kembali untuk mencegah kelelahan berlebih.
+      </p>
+</div>
+</div>
+<!-- Motivational Warm Micro-Card -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">psychology</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Fleksibel Kapan Saja</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Kamu bisa geser hari latihan dengan bebas di kalender mingguanmu nanti.</span>
+</div>
+</div>
+</div>
+<script>
+  // Micro-interaction for frequency pill switching
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.freq-card');
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        cards.forEach(c => {
+          c.classList.remove('bg-surface-container-high', 'shadow-lg', 'shadow-primary-container/15');
+          c.classList.add('bg-surface-container-low');
+          const title = c.querySelector('.text-primary');
+          if (title) {
+            title.classList.remove('text-primary');
+            title.classList.add('text-on-surface');
+          }
+        });
+        
+        card.classList.remove('bg-surface-container-low');
+        card.classList.add('bg-surface-container-high', 'shadow-lg', 'shadow-primary-container/15');
+        const num = card.querySelector('.font-headline-metric-mobile');
+        if (num) {
+          num.classList.remove('text-on-surface');
+          num.classList.add('text-primary');
+        }
+      });
+    });
+  });
+</script></main><footer class="fixed bottom-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl pb-safe shadow-[0_-8px_24px_rgba(255,90,54,0.06)]"><div class="h-20 px-gutter max-w-[480px] mx-auto flex items-center justify-between gap-space-md"><button class="h-12 px-space-xl rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg transition-all active:scale-[0.98]" onclick="history.back()">Kembali</button><button class="h-12 flex-1 rounded-full bg-primary-container text-white font-label-lg text-label-lg shadow-[0_4px_16px_rgba(255,90,54,0.25)] hover:brightness-105 active:scale-[0.98] transition-all flex items-center justify-center gap-space-xs"><span>Lanjut</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></button></div></footer></body></html>

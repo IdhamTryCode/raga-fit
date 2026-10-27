@@ -14,7 +14,7 @@ Stack: **Next.js (App Router) + Tailwind CSS v4 + Supabase**. Referensi rencana:
 ## Menjalankan
 
 ```bash
-cp .env.local.example .env.local   # isi dari Supabase → Settings → API
+cp .env.local.example .env.local   # isi dari Supabase → Settings → API (URL + publishable key)
 npm install
 npm run dev
 ```

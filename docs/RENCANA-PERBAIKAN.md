@@ -14,8 +14,11 @@ Selesai dikerjakan:
 - [x] Fase 4: halaman Riwayat & Profil, generator "Rumah & Gym" + variasi gerakan.
 - [x] Fase 5: dokumen & referensi pindah ke `docs/`, CSS landscape jadi varian Tailwind `phone-land:`, test baru.
 
+- [x] `supabase/schema.sql` v2 terpasang di Supabase (data latihan lama di-reset, akun tetap).
+- [x] Uji E2E di browser (layar HP, Chrome headless): daftar, onboarding, sesi, ringkasan, riwayat, profil, logout/login.
+- [x] Workflow GitHub Supabase keepalive + secret repo.
+
 Belum / ditunda:
-- [ ] Jalankan `supabase/schema.sql` v2 di Supabase (mereset data latihan lama).
 - [ ] Lupa password (butuh SMTP).
 - [ ] Grafik progres per gerakan, streak.
 - [ ] Uji manual di HP (iPhone & Android), terutama landscape dan mode offline.

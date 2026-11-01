@@ -16,6 +16,7 @@ import {
 } from "@/lib/guided";
 import { cue, hasIndonesianVoice, stopSpeaking } from "@/lib/voice";
 import { formatWeight, stepWeight } from "@/lib/weight";
+import ExerciseAnimator from "@/components/ExerciseAnimator";
 import type { ExerciseData, Row } from "./WorkoutSession";
 
 type Phase =
@@ -218,12 +219,12 @@ export default function GuidedRunner(props: Props) {
       type="button"
       onClick={togglePause}
       aria-label={paused ? "Lanjutkan" : "Jeda"}
-      className="flex size-20 items-center justify-center rounded-full bg-white text-surface shadow-[0_8px_30px_rgba(255,255,255,0.15)] transition active:scale-95"
+      className="flex size-20 shrink-0 items-center justify-center rounded-full bg-white text-surface short:size-16 shadow-[0_8px_30px_rgba(255,255,255,0.15)] transition active:scale-95"
     >
       {paused ? <Play className="ml-1 size-9 fill-current" /> : <Pause className="size-9 fill-current" />}
     </button>
   );
-  const sideBtn = "flex h-14 min-w-24 flex-col items-center justify-center gap-0.5 rounded-2xl bg-card px-3 text-xs font-bold text-ink-secondary transition active:scale-95";
+  const sideBtn = "flex h-14 min-w-24 flex-1 flex-col phone-land:min-w-0 items-center justify-center gap-0.5 rounded-2xl bg-card px-3 text-xs font-bold text-ink-secondary transition active:scale-95";
 
   if (phase.kind === "ready") {
     const ex = exercises[phase.at.ex];
@@ -235,7 +236,7 @@ export default function GuidedRunner(props: Props) {
     center = (
       <>
         <p className="text-sm font-bold tracking-widest text-ink-secondary">SIAP</p>
-        <p className="text-[112px] font-extrabold leading-none tabular">{c || "GO"}</p>
+        <p className="text-[112px] font-extrabold leading-none tabular short:text-[88px] phone-land:text-[80px]">{c || "GO"}</p>
       </>
     );
     below = <TempoPicker ex={ex} tempo={tempo} onChange={setTempo} />;
@@ -261,7 +262,7 @@ export default function GuidedRunner(props: Props) {
     center = (
       <>
         <p className="text-sm font-bold tracking-widest text-primary">{isDuration ? "TAHAN" : "REPETISI"}</p>
-        <p key={count} className="animate-[pop_.25s_ease-out] text-[120px] font-extrabold leading-none tabular">{count}</p>
+        <p key={count} className="animate-[pop_.25s_ease-out] text-[120px] font-extrabold leading-none tabular short:text-[96px] phone-land:text-[88px]">{count}</p>
         <p className="mt-1 text-base font-semibold text-ink-secondary">dari {phase.target} {isDuration ? "dtk" : "rep"}</p>
       </>
     );
@@ -387,7 +388,24 @@ export default function GuidedRunner(props: Props) {
         <p className="mt-2 text-center text-[12px] text-ink-muted">Suara Bahasa Indonesia tidak ada di perangkat ini, pakai bunyi beep.</p>
       )}
 
-      <div className="flex flex-1 flex-col items-center justify-center gap-6 phone-land:flex-row phone-land:gap-10">
+      <div className="flex min-h-0 flex-1 flex-col items-center justify-center gap-5 short:gap-3 phone-land:flex-row phone-land:gap-6">
+        {/* Contoh gerakan: saat istirahat menampilkan gerakan berikutnya */}
+        {ex && (
+          <div className="relative w-full max-w-sm shrink-0 overflow-hidden rounded-[20px] bg-white phone-land:w-[25%] phone-land:max-w-[240px]">
+            <ExerciseAnimator
+              key={ex.id}
+              exerciseId={ex.id}
+              name={ex.name}
+              className="h-[20dvh] min-h-24 w-full short:h-[17dvh] phone-land:h-[50dvh]"
+            />
+            {phase.kind === "rest" && (
+              <span className="absolute left-2.5 top-2.5 rounded-full bg-surface/90 px-2.5 py-1 text-[11px] font-bold tracking-wide text-warning">
+                BERIKUTNYA{phase.next.ex !== phase.at.ex ? ` · ${ex.name}` : ""}
+              </span>
+            )}
+          </div>
+        )}
+
         <div className="flex flex-col items-center">
           {ex && setInfo && (
             <div className="mb-4 flex items-center gap-2">
@@ -399,7 +417,7 @@ export default function GuidedRunner(props: Props) {
               </span>
             </div>
           )}
-          <div className="relative size-[min(72vw,300px)] phone-land:size-[min(62dvh,260px)]">
+          <div className="relative size-[min(68vw,34dvh,290px)] min-h-48 min-w-48 short:size-[min(60vw,30dvh)] phone-land:size-[min(58dvh,230px)] phone-land:min-h-0 phone-land:min-w-0">
             <svg viewBox="0 0 200 200" className="absolute inset-0 -rotate-90">
               <circle cx="100" cy="100" r="90" fill="none" stroke="var(--color-interactive)" strokeWidth="10" />
               <circle
@@ -419,7 +437,7 @@ export default function GuidedRunner(props: Props) {
           </div>
         </div>
 
-        <div className="flex w-full max-w-sm flex-col gap-6 phone-land:max-w-xs">
+        <div className="flex w-full max-w-sm flex-col gap-6 short:gap-3 phone-land:w-[300px] phone-land:max-w-[36%] phone-land:shrink-0">
           {below}
           <div className="flex items-center justify-between gap-3">{controls}</div>
         </div>

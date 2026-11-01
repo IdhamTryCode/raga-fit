@@ -2,6 +2,8 @@
 
 /* Ponsel dalam posisi landscape (bukan tablet/desktop). */
 @custom-variant phone-land (@media (orientation: landscape) and (max-height: 500px));
+/* Ponsel portrait yang pendek (mis. iPhone SE 375×667). */
+@custom-variant short (@media (orientation: portrait) and (max-height: 720px));
 
 @theme {
   --font-sans: var(--font-jakarta), system-ui, sans-serif;

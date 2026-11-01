@@ -2,7 +2,6 @@
 
 import { Check } from "lucide-react";
 import { formatWeight, parseCount, parseWeight, stepWeight } from "@/lib/weight";
-import DurationTimer from "./DurationTimer";
 import NumberStepper from "./NumberStepper";
 import type { ExerciseData, Row } from "./WorkoutSession";
 
@@ -91,13 +90,6 @@ export default function SetCard({ ex, setNumber, row, active, showWeight, weight
             parse={parseWeight}
             onStep={(dir) => onChange({ weight: stepWeight(row.weight, dir, weightStep) })}
             onCommit={(weight) => onChange({ weight })}
-          />
-        )}
-
-        {isDuration && (
-          <DurationTimer
-            initialTarget={ex.targetSeconds ?? ex.defaultValue}
-            onResult={(reps) => onChange({ reps })}
           />
         )}
 

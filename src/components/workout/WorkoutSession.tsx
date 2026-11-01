@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, ChevronLeft, CloudOff, Loader2, X } from "lucide-react";
+import { ChevronDown, ChevronLeft, CloudOff, Loader2, Play, X } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
 import { imageUrl } from "@/data/exercises";
@@ -11,6 +11,9 @@ import { useWakeLock } from "@/hooks/useWakeLock";
 import ExerciseAnimator from "@/components/ExerciseAnimator";
 import RestTimerBar from "@/components/RestTimerBar";
 import { abandonSession, finishSession } from "@/app/sesi/actions";
+import { firstPending, type Pos } from "@/lib/guided";
+import { primeVoice, stopSpeaking } from "@/lib/voice";
+import GuidedRunner from "./GuidedRunner";
 import SetCard from "./SetCard";
 import { useSyncQueue } from "./useSyncQueue";
 
@@ -36,6 +39,13 @@ const NO_WEIGHT_EQUIPMENT = new Set([
   "Berat badan", "Pita elastis", "Kursi", "Kursi/meja", "Kursi/bangku",
   "Palang", "Palang/meja", "Bola fitness", "Bar paralel",
 ]);
+
+const AUDIO_KEY = "raga:audio";
+
+/** Kolom KG hanya untuk gerakan repetisi dengan alat beban (atau yang sudah pernah diberi beban). */
+function usesWeight(ex: ExerciseData, rows: Row[]): boolean {
+  return ex.metric === "reps" && (!NO_WEIGHT_EQUIPMENT.has(ex.equipment) || rows.some((r) => r.weight > 0));
+}
 
 interface Props {
   sessionId: string;
@@ -66,6 +76,22 @@ export default function WorkoutSession({ sessionId, userId, title, position, exe
   const [sheet, setSheet] = useState<null | "exit" | "finish-empty">(null);
   const [toast, setToast] = useState<string | null>(null);
   const [finishing, startFinish] = useTransition();
+  const [guided, setGuided] = useState<Pos | null>(null);
+  const [audio, setAudio] = useState(() => {
+    try {
+      return localStorage.getItem(AUDIO_KEY) !== "0";
+    } catch {
+      return true;
+    }
+  });
+
+  function changeAudio(on: boolean) {
+    setAudio(on);
+    if (!on) stopSpeaking();
+    try {
+      localStorage.setItem(AUDIO_KEY, on ? "1" : "0");
+    } catch {}
+  }
 
   useEffect(() => {
     try {
@@ -92,9 +118,9 @@ export default function WorkoutSession({ sessionId, userId, title, position, exe
 
   const current = exercises[index];
   const currentRows = rows[current.id];
-  const showWeight =
-    current.metric === "reps" &&
-    (!NO_WEIGHT_EQUIPMENT.has(current.equipment) || currentRows.some((r) => r.weight > 0));
+  const showWeight = usesWeight(current, currentRows);
+  const doneGrid = exercises.map((ex) => rows[ex.id].map((r) => r.done));
+  const guidedStart = firstPending(doneGrid, index);
   const firstUndone = currentRows.findIndex((r) => !r.done);
   const activeIdx = selected[current.id] !== undefined && !currentRows[selected[current.id]]?.done
     ? selected[current.id]
@@ -109,20 +135,22 @@ export default function WorkoutSession({ sessionId, userId, title, position, exe
     setRows((prev) => ({ ...prev, [exId]: prev[exId].map((r, j) => (j === i ? { ...r, ...patch } : r)) }));
   }
 
-  function completeSet(ex: ExerciseData, i: number) {
+  function completeSet(ex: ExerciseData, i: number, opts: { reps?: number; guided?: boolean } = {}) {
     unlockAudio(); // wajib dalam handler tap pertama (iOS)
-    const row = rows[ex.id][i];
+    const row = { ...rows[ex.id][i], ...(opts.reps !== undefined ? { reps: opts.reps } : {}) };
+    const weighted = usesWeight(ex, rows[ex.id]);
     // Set berikutnya ikut nilai set ini bila belum pernah ada riwayat.
     setRows((prev) => ({
       ...prev,
       [ex.id]: prev[ex.id].map((r, j) => {
-        if (j === i) return { ...r, done: true };
+        if (j === i) return { ...r, reps: row.reps, done: true };
         if (j > i && !r.done && !lastMap[ex.id]?.[j + 1]) return { ...r, weight: row.weight };
         return r;
       }),
     }));
     setSelected((s) => Object.fromEntries(Object.entries(s).filter(([k]) => k !== ex.id)));
-    sync.enqueue({ kind: "upsert", exerciseId: ex.id, setNumber: i + 1, weight: showWeight ? row.weight : 0, reps: row.reps });
+    sync.enqueue({ kind: "upsert", exerciseId: ex.id, setNumber: i + 1, weight: weighted ? row.weight : 0, reps: row.reps });
+    if (opts.guided) return; // mode timer punya istirahat & umpan baliknya sendiri
 
     const allDoneAfter = rows[ex.id].every((r, j) => j === i || r.done);
     showToast(allDoneAfter ? `${ex.name} selesai! 💪` : `Set ${i + 1} selesai!`);
@@ -134,6 +162,20 @@ export default function WorkoutSession({ sessionId, userId, title, position, exe
     setSelected((s) => ({ ...s, [ex.id]: i }));
     sync.enqueue({ kind: "delete", exerciseId: ex.id, setNumber: i + 1 });
     timer.stop();
+  }
+
+  function startGuided() {
+    primeVoice(); // harus di dalam tap supaya suara diizinkan (iOS)
+    timer.stop();
+    if (guidedStart) setGuided(guidedStart);
+  }
+
+  /** Koreksi repetisi set yang sudah tercatat (dari layar istirahat mode timer). */
+  function adjustDoneReps(pos: Pos, reps: number) {
+    const ex = exercises[pos.ex];
+    const row = rows[ex.id][pos.set];
+    patchRow(ex.id, pos.set, { reps });
+    sync.enqueue({ kind: "upsert", exerciseId: ex.id, setNumber: pos.set + 1, weight: usesWeight(ex, rows[ex.id]) ? row.weight : 0, reps });
   }
 
   function go(to: number) {
@@ -240,6 +282,24 @@ export default function WorkoutSession({ sessionId, userId, title, position, exe
           <span className={`min-w-0 flex-1 ${tipsOpen ? "" : "line-clamp-2"}`}>{current.tips}</span>
           <ChevronDown className={`mt-0.5 size-4 shrink-0 transition ${tipsOpen ? "rotate-180" : ""}`} />
         </button>
+
+        {guidedStart && (
+          <button
+            type="button"
+            onClick={startGuided}
+            className="mt-4 flex h-16 w-full items-center gap-3 rounded-2xl bg-white px-4 text-left text-surface shadow-[0_8px_24px_rgba(255,255,255,0.08)] transition active:scale-[0.98]"
+          >
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-white">
+              <Play className="ml-0.5 size-5 fill-current" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-base font-extrabold">Mulai Timer</span>
+              <span className="block truncate text-xs font-semibold text-surface/60">
+                {guidedStart.ex === index ? `Set ${guidedStart.set + 1}` : exercises[guidedStart.ex].name} · hitungan & istirahat otomatis
+              </span>
+            </span>
+          </button>
+        )}
       </section>
 
       {/* ── Kolom kanan: set + tombol ───────────────────────────────────── */}
@@ -304,6 +364,30 @@ export default function WorkoutSession({ sessionId, userId, title, position, exe
       </section>
 
       <RestTimerBar timer={timer} />
+
+      {guided && (
+        <GuidedRunner
+          exercises={exercises}
+          rows={rows}
+          start={guided}
+          weightStep={weightStep}
+          audio={audio}
+          showWeight={(ex) => usesWeight(ex, rows[ex.id])}
+          onAudioChange={changeAudio}
+          onSetDone={(pos, reps) => completeSet(exercises[pos.ex], pos.set, { reps, guided: true })}
+          onAdjustReps={adjustDoneReps}
+          onWeight={(pos, weight) => patchRow(exercises[pos.ex].id, pos.set, { weight })}
+          onPosition={(i) => i !== index && go(i)}
+          onFinishWorkout={() => {
+            setGuided(null);
+            requestFinish();
+          }}
+          onClose={() => {
+            stopSpeaking();
+            setGuided(null);
+          }}
+        />
+      )}
 
       {toast && (
         <div className="pointer-events-none fixed inset-x-0 top-[calc(12px+env(safe-area-inset-top))] z-50 flex justify-center px-5">
@@ -418,7 +502,8 @@ function buildRows(exercises: ExerciseData[], saved: SavedLog[], lastMap: LastMa
         const s = saved.find((l) => l.exerciseId === ex.id && l.setNumber === i + 1);
         if (s) return { weight: s.weight, reps: s.reps, done: true };
         const last = lastMap[ex.id]?.[i + 1] ?? lastMap[ex.id]?.[1];
-        return { weight: last?.weight ?? 0, reps: last?.reps ?? ex.defaultValue, done: false };
+        const fallback = ex.metric === "duration" ? (ex.targetSeconds ?? ex.defaultValue) : ex.defaultValue;
+        return { weight: last?.weight ?? 0, reps: last?.reps ?? fallback, done: false };
       }),
     ]),
   );

@@ -46,6 +46,28 @@ export function playTimerFinishBeep(): void {
   navigator.vibrate?.([200, 100, 200]);
 }
 
+/** Satu bunyi pendek (pengganti suara bila perangkat tidak punya suara Indonesia). */
+export function playBeep(freq = 880, duration = 0.12): void {
+  const audio = getAudioContext();
+  if (!audio) return;
+  try {
+    if (audio.state === "suspended") void audio.resume();
+    const t = audio.currentTime;
+    const osc = audio.createOscillator();
+    const gain = audio.createGain();
+    osc.type = "sine";
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.0001, t);
+    gain.gain.exponentialRampToValueAtTime(0.25, t + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + duration);
+    osc.connect(gain).connect(audio.destination);
+    osc.start(t);
+    osc.stop(t + duration + 0.02);
+  } catch {
+    // abaikan
+  }
+}
+
 // iOS: context bisa suspended saat kembali ke tab.
 if (typeof document !== "undefined") {
   document.addEventListener("visibilitychange", () => {

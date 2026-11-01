@@ -1,0 +1,61 @@
+name: Supabase Keepalive
+
+# Menjaga project Supabase free-tier tetap aktif (auto-pause setelah 7 hari tanpa aktivitas).
+# Berjalan independen dari server mana pun — GitHub yang menjalankannya.
+# GitHub otomatis mengirim email kalau job ini GAGAL, jadi kamu tahu sebelum DB mati.
+#
+# Butuh 2 secret di repo (Settings -> Secrets and variables -> Actions):
+#   SUPABASE_URL  = nilai NEXT_PUBLIC_SUPABASE_URL
+#   SUPABASE_KEY  = nilai NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY (publishable/anon, aman; RLS tetap berlaku)
+
+on:
+  schedule:
+    - cron: '0 2 * * *'   # tiap hari 02:00 UTC (~09:00 WIB)
+  workflow_dispatch: {}    # bisa dijalankan manual dari tab Actions
+
+permissions:
+  actions: write           # dibutuhkan step "Cegah workflow di-disable" di bawah
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Ping Supabase REST (dengan retry)
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: |
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_KEY" ]; then
+            echo "::error::Secret SUPABASE_URL / SUPABASE_KEY belum diset di repo."
+            exit 1
+          fi
+          # Query ringan ke tabel nyata supaya terhitung aktivitas database.
+          # Dengan publishable key + RLS hasilnya array kosong, tapi tetap HTTP 200.
+          for i in 1 2 3 4 5; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 \
+              -H "apikey: $SUPABASE_KEY" \
+              -H "Authorization: Bearer $SUPABASE_KEY" \
+              "$SUPABASE_URL/rest/v1/profiles?select=id&limit=1")
+            echo "Percobaan $i: HTTP $code"
+            if [ "$code" = "200" ]; then
+              echo "Keep-alive sukses."
+              exit 0
+            fi
+            [ "$i" -lt 5 ] && sleep 15
+          done
+          echo "::error::Keep-alive GAGAL setelah 5 percobaan (HTTP terakhir: $code)."
+          exit 1
+
+      # GitHub men-disable scheduled workflow setelah 60 hari repo tanpa aktivitas.
+      # Memanggil endpoint /enable tiap hari me-reset hitungan itu, tanpa perlu commit apa pun.
+      # if: always() -> tetap jalan walau ping Supabase di atas gagal.
+      - name: Cegah workflow di-disable GitHub
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api -X PUT \
+            "repos/${{ github.repository }}/actions/workflows/supabase-keepalive.yml/enable" \
+            --silent && echo "Workflow di-refresh (anti auto-disable)." \
+            || echo "::warning::Gagal refresh workflow, cek permission actions:write."

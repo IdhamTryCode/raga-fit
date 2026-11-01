@@ -1,61 +1,69 @@
 # Raga Fit
 
-Aplikasi pencatat latihan untuk pemula — PWA mobile-first, dark mode, bahasa Indonesia.
-Stack: **Next.js (App Router) + Tailwind CSS v4 + Supabase**. Referensi plan: `Masterplan MVP Lite Aplikasi Pencatat Latihan untuk Pemula.md`.
+Aplikasi pencatat latihan untuk pemula. PWA mobile-first, dark mode, bahasa Indonesia.
+Stack: **Next.js 16 (App Router) + Tailwind CSS v4 + Supabase**.
 
-## Layar (MVP Lite)
+Dokumen: `docs/RENCANA-PERBAIKAN.md` (rencana & status perbaikan), masterplan awal di `docs/`,
+referensi UI di `docs/design/` (acuan utama: `stitch_raga_workout_tracker_ui`).
 
-1. Login / Daftar — `/login`
-2. Onboarding 3 pertanyaan + ringkasan — `/onboarding`
-3. Dashboard jadwal mingguan — `/dashboard`
-4. Layar latihan satu gerakan per layar (portrait & landscape ponsel) — `/workout/[1-7]`
-5. Latihan selesai (durasi, total set, total beban)
+## Layar
+
+| Rute | Isi |
+| --- | --- |
+| `/login`, `/daftar` | Masuk / Daftar (nama, email, password + konfirmasi) |
+| `/onboarding` | Lokasi, jumlah & pilihan hari, fokus, ringkasan program. Juga dipakai untuk ubah program |
+| `/dashboard` | Strip minggu ini, kartu "Latihan berikutnya" (bisa dimulai hari apa saja), daftar program |
+| `/sesi/[id]` | Sesi latihan: satu gerakan per layar, set KG/rep, timer istirahat & timer durasi |
+| `/sesi/[id]/ringkasan` | Durasi, total set, total beban/repetisi, rekor baru |
+| `/riwayat` | Sesi terakhir + progres per gerakan (terakhir & rekor) |
+| `/profil` | Nama, kenaikan beban per tap (1 / 2,5 / 5 kg), ubah program, keluar |
+
+## Konsep penting
+
+- **Program = rotasi Latihan A, B, C, …** (3–5 latihan), tidak terikat hari. Hari pilihan user
+  hanya rencana; "latihan berikutnya" = latihan setelah sesi terakhir yang selesai.
+- **Sesi** (`workout_sessions`) menyimpan salinan judul & gerakan, jadi riwayat aman walau program diganti.
+  Log set terikat ke sesi: `unique (session_id, exercise_id, set_number)`.
+- **Tanggal** dihitung di zona waktu user (`profiles.timezone`, terdeteksi saat onboarding),
+  bukan zona server. Lihat `src/lib/date.ts`.
+- **Penyimpanan set**: UI berubah seketika, penyimpanan lewat antrean di belakang
+  (`src/components/workout/useSyncQueue.ts`) dengan retry otomatis saat sinyal kembali.
+  Draf sesi + antrean disimpan di localStorage, jadi refresh/tutup tab tidak menghilangkan progres.
+- **Beban**: tombol +/- selalu mendarat di kelipatan langkah (bawaan 1 kg); angka bisa diketuk
+  untuk diketik. Lihat `src/lib/weight.ts`.
+- Auto-isi nilai terakhir lewat RPC `get_last_exercise_logs(ids, exclude_session)`.
+- Timer istirahat & durasi berbasis timestamp + Wake Lock.
 
 ## Environment Variables
 
-| Variabel | Sumber | Dipakai di |
-| --- | --- | --- |
-| `NEXT_PUBLIC_SUPABASE_URL` | Supabase → Settings → API → Project URL | Semua modul Supabase (browser + server + proxy) |
-| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase → Settings → API → Publishable key (anon) | Semua modul Supabase (browser + server + proxy) |
+| Variabel | Sumber |
+| --- | --- |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase → Settings → API → Project URL |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase → Settings → API → Publishable key |
 
-Keduanya public-safe (anon/publishable); RLS memastikan tiap user hanya melihat datanya.
-`service_role`/secret key TIDAK dipakai di repo ini.
+Keduanya aman untuk publik; RLS memastikan tiap user hanya melihat datanya sendiri.
 
-## Menjalankan Lokal
+## Menjalankan lokal
 
 ```bash
-cp .env.local.example .env.local   # isi dari Supabase → Settings → API (URL + publishable key)
+cp .env.local.example .env.local   # isi URL + publishable key
 npm install
 npm run dev
 ```
 
-Penting (Windows): pastikan variabel `NODE_ENV=production` tidak ter-set global saat
-menginstall, karena npm akan melewatkan devDependencies.
+## Database
 
-## Database (sekali jalan)
+Jalankan `supabase/schema.sql` di Supabase SQL Editor. Script ini **mereset** tabel lama
+(data latihan lama terhapus, akun tetap ada dan profilnya dibuat ulang).
 
-Jalankan `supabase/schema.sql` di Supabase SQL Editor (tables + trigger + RLS + RPC),
-atau:
-
-```bash
-npx supabase db query --db-url "postgresql://postgres.<project-ref>:<PASSWORD>@<REGION_POOLER>/postgres:5432/postgres" -f supabase/schema.sql
-```
-
-Pengaturan Supabase yang briwa: **Authentication → Sign In/Providers → Email → "Confirm
-email" nonaktif** (versi MVP tidak punya alur reset password).
+Pengaturan Supabase: Authentication → Email → "Confirm email" boleh nonaktif (alur daftar
+juga menangani mode konfirmasi email aktif).
 
 ## Deploy ke Vercel
 
-1. Import repo `IdhamTryCode/raga-fit` di Vercel (framework: deteksi Next.js otomatis).
-2. Di Project Settings → Environment Variables tambahkan dua variabel dari tabel di atas
-   (Production + Preview).
-3. Tambahkan domain Vercel ke Supabase → Authentication → URL Configuration
-   (Site URL + Redirect URLs) bila mengaktifkan email/rilis publik. Untuk MVP email
-   password-only ini opsional.
-4. Deploy. PWA akan tersaji dari domain produksi; ikon dan manifest sudah di `public/` + `src/app/manifest.ts`.
-
-Catatan bypass: `npm run check-exercises` memvalidasi 162 gambar jsDelivr setiap katalog
-diubah; commit SHA terkunci sehingga aman untuk production.
+1. Import repo di Vercel (Next.js terdeteksi otomatis).
+2. Tambahkan dua environment variable di atas (Production + Preview).
+3. Tambahkan domain Vercel ke Supabase → Authentication → URL Configuration.
 
 ## Perintah
 
@@ -65,23 +73,10 @@ diubah; commit SHA terkunci sehingga aman untuk production.
 | `npm run build` | Build production |
 | `npm run lint` | ESLint |
 | `npm run typecheck` | `tsc --noEmit` |
-| `npm test` | Vitest (helper tanggal + generator jadwal) |
-| `npm run check-exercises` | Validasi 81 id × 2 gambar di jsDelivr (SHA terkunci) |
+| `npm test` | Vitest (tanggal, generator program, aturan beban) |
+| `npm run check-exercises` | Validasi 81 gerakan × 2 gambar di jsDelivr |
 
 ## Katalog gerakan
 
-`src/data/exercises.ts` — 81 gerakan dari
-[free-exercise-db](https://github.com/yuhonas/free-exercise-db), gambar disajikan via
-jsDelivr dengan commit SHA terkunci. Aturan: `id` tidak boleh diganti setelah ada log;
-hanya `name`, `tips`, `autoPick` yang boleh diedit, dan wajib `npm run check-exercises`
-setiap katalog berubah.
-
-## Logika penting
-
-- Tanggal log selalu dari client (tanggal lokal perangkat, `YYYY-MM-DD`) — hindari bug UTC vs WIB.
-- Penyimpanan set pakai `upsert` + unique constraint `(user_id, workout_date, exercise_id, set_number)`.
-- Auto-fill beban terakhir lewat RPC `get_last_exercise_logs` (memakai `auth.uid()`).
-- Timer istirahat & stopwatch berbasis timestamp + Wake Lock; pada iPhone terkunci beep
-  tidak berbunyi — status "selesai" tampil saat kembali ke app.
-- Fallback ID gerakan tidak dikenal: UI melewati baris tersebut, tidak crash.
-
+`src/data/exercises.ts`: 81 gerakan dari [free-exercise-db](https://github.com/yuhonas/free-exercise-db),
+gambar via jsDelivr dengan commit SHA terkunci. `id` tidak boleh diganti setelah ada log.

@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Ponsel dalam posisi landscape (bukan tablet/desktop). */
+@custom-variant phone-land (@media (orientation: landscape) and (max-height: 500px));
+
 @theme {
   --font-sans: var(--font-jakarta), system-ui, sans-serif;
 
@@ -8,7 +11,7 @@
   --color-primary-border: rgba(255, 90, 44, 0.24);
   --color-success: #2ed47a;
   --color-warning: #ffb800;
-  --color-error: #ff4d4d;
+  --color-error: #ff6b5a;
 
   --color-surface: #0f1115;
   --color-card: #181b22;
@@ -18,8 +21,11 @@
   --color-ink: #ffffff;
   --color-ink-secondary: #9aa3b2;
   --color-ink-muted: #656e80;
+}
 
-  --radius-card: 1.25rem;
+html {
+  background: var(--color-surface);
+  color-scheme: dark;
 }
 
 body {
@@ -27,12 +33,18 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
   overscroll-behavior-y: none;
 }
 
-/* Angka metrik tidak boleh "goyang" saat stepper/berjalan */
+/* Angka metrik tidak boleh "goyang" saat berubah */
 .tabular {
   font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 /* Animasi flip dua frame untuk ExerciseAnimator */
@@ -78,47 +90,5 @@ body {
   }
   .animator .frame-b {
     opacity: 0;
-  }
-}
-
-/* Layout landscape ponsel: dua kolom tanpa scroll panjang.
-   Aktif HANYA di ponsel landscape (bukan tablet/desktop). */
-@media (orientation: landscape) and (max-height: 500px) {
-  .workout-main {
-    display: grid !important;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    height: 100dvh !important;
-    overflow: hidden !important;
-  }
-  .workout-visual {
-    grid-column: span 5 / span 5;
-    display: flex !important;
-    flex-direction: column;
-    justify-content: center;
-    height: 100dvh !important;
-    overflow: hidden !important;
-    padding-inline: 1.5rem;
-  }
-  .workout-visual .animator-box {
-    height: 38dvh !important;
-    margin-top: 0 !important;
-  }
-  .workout-controls {
-    grid-column: span 7 / span 7;
-    display: flex !important;
-    flex-direction: column;
-    height: 100dvh !important;
-    border-left: 1px solid var(--color-line);
-  }
-  .workout-scroll {
-    flex: 1 1 auto;
-    overflow-y: auto;
-    padding-inline: 1.5rem !important;
-    padding-bottom: 1.5rem !important;
-  }
-  .workout-footer {
-    border-top: 1px solid var(--color-line);
-    background: var(--color-card);
-    padding-inline: 1.5rem !important;
   }
 }
